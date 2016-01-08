@@ -1,97 +1,116 @@
-@font-face {
-	font-family: 'ecoico';
-	src:url('../fonts/timelineicons/ecoico.eot');
-	src:url('../fonts/timelineicons/ecoico.eot?#iefix') format('embedded-opentype'),
-		url('../fonts/timelineicons/ecoico.woff') format('woff'),
-		url('../fonts/timelineicons/ecoico.ttf') format('truetype'),
-		url('../fonts/timelineicons/ecoico.svg#ecoico') format('svg');
-	font-weight: normal;
-	font-style: normal;
-} /* Made with http://icomoon.io/ */
+/*@font-face {
+    font-family: 'ecoico';
+    src:url('../fonts/timelineicons/ecoico.eot');
+    src:url('../fonts/timelineicons/ecoico.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/timelineicons/ecoico.woff') format('woff'),
+        url('../fonts/timelineicons/ecoico.ttf') format('truetype'),
+        url('../fonts/timelineicons/ecoico.svg#ecoico') format('svg');
+    font-weight: normal;
+    font-style: normal;
+} */ /* Made with http://icomoon.io/ */
+
+
+ul.inline-list {
+    list-style-type: disc;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 40px;
+}
+
+ul.inline-list li {
+    display: inline-block;
+    margin: 0px 2rem 0px 0px;
+    padding: 0px 0px 0px 0px;
+    position: relative;
+    line-height: 1rem;
+    vertical-align: middle;
+}
 
 .cbp_tmtimeline {
-	margin: 30px 0 0 0;
-	padding: 0;
-	list-style: none;
-	position: relative;
+    margin: 30px 0 0 0;
+    padding: 0;
+    list-style: none;
+    position: relative;
 } 
 
 /* The line */
 .cbp_tmtimeline:before {
-	content: '';
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	width: 15px;
-	background: #afdcf8;
-	left: 19%;
-	margin-left: -10px;
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 15px;
+    background: #afdcf8;
+    left: 19%;
+    margin-left: -10px;
 }
 
 .cbp_tmtimeline > li {
-	position: relative;
+    position: relative;
 }
 
 .cbp_tmtimeline > li > div.block {
-	display: block;
-	clear: both;
+    display: block;
+    clear: both;
 }
 
 /* The date/time */
 .cbp_tmtimeline > li .cbp_tmtime {
-	display: block;
-	width: 25%;
-	padding-right: 100px;
-	position: absolute;
+    display: block;
+    width: 25%;
+    padding-right: 100px;
+    position: absolute;
 }
 
 .cbp_tmtimeline > li .cbp_tmtime span {
-	display: block;
-	text-align: right;
+    display: block;
+    text-align: right;
 }
 
 .cbp_tmtimeline > li .cbp_tmtime span:first-child {
-	font-size: 0.9em;
-	color: #bdd0db;
+    font-size: 0.9em;
+    color: #bdd0db;
 }
 
 .cbp_tmtimeline > li .cbp_tmtime span:last-child {
-	/*font-size: 2.9em;*/
-	font-size: 1.5em;
-	color: #3594cb;
+    /*font-size: 2.9em;*/
+    font-size: 1.5em;
+    color: #3594cb;
 }
 
 .cbp_tmtimeline > li:nth-child(odd) .cbp_tmtime span:last-child {
-	color: #6cbfee;
+    color: #6cbfee;
 }
 
 /* right blank */
 .cbp_tmtimeline > li .cbp_tmblank {
-	min-height: 30px;
-	margin: 0 0 30px 25%;
+    min-height: 30px;
+    margin: 0 0 30px 25%;
 }
 
 /* Right content */
 .cbp_tmtimeline > li .cbp_tmlabel {
-	padding: 5px 5px 0 1em;
-	margin: 0 0 15px 25%;
-	background: #3594cb;
-	color: #fff;
-	font-size: 1.2em;
-	font-weight: 300;
-	line-height: 1.4;
-	position: relative;
-	border-radius: 5px;
+    padding: 5px 5px 0 1em;
+    margin: 0 0 15px 25%;
+    background: #3594cb;
+    color: #fff;
+    font-size: 1.2em;
+    font-weight: 300;
+    line-height: 1.4;
+    position: relative;
+    border-radius: 5px;
 }
 
 .cbp_tmtimeline > li:nth-child(odd) .cbp_tmlabel {
-	background: #6cbfee;
+    background: #6cbfee;
 }
 
 .cbp_tmtimeline > li .cbp_tmlabel h2, .cbp_tmtimeline > li .cbp_tmlabel h4 { 
-	margin-top: 0px;
-	padding: 0 0 10px 0;
-	/*border-bottom: 1px solid rgba(255,255,255,0.4);*/
+    margin-top: 0px;
+    padding: 0 0 10px 0;
+    /*border-bottom: 1px solid rgba(255,255,255,0.4);*/
 }
 
 
@@ -115,75 +134,75 @@
 
 /* The icons */
 .cbp_tmtimeline > li .cbp_tmicon {
-	width: 30px;
-	height: 30px;
-	font-family: 'ecoico';
-	speak: none;
-	font-style: normal;
-	font-weight: normal;
-	font-variant: normal;
-	text-transform: none;
-	font-size: 1em;
-	line-height: 30px;
-	-webkit-font-smoothing: antialiased;
-	position: absolute;
-	background: white;
-	border-radius: 50%;
-	box-shadow: 0 0 0 3px #afdcf8;
-	text-align: center;
-	left: 20%;
-	/*top: 0;*/
-	margin: 5px 0 0 -25px;
-	color: black;
+    width: 30px;
+    height: 30px;
+    font-family: 'ecoico';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    font-size: 1em;
+    line-height: 30px;
+    -webkit-font-smoothing: antialiased;
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px #afdcf8;
+    text-align: center;
+    left: 20%;
+    /*top: 0;*/
+    margin: 5px 0 0 -25px;
+    color: black;
 }
 
 .cbp_tmtimeline > li .cbp_tmicon.ontheway {
-	border-radius: 10%;
-	width: 25px;
-	margin: 5px 0 0 -22.5px;
+    border-radius: 10%;
+    width: 25px;
+    margin: 5px 0 0 -22.5px;
 }
 
 .cbp_tmtimeline > li .cbp_tmicon.red {
-	background: #DA726B;
-	box-shadow: 0 0 0 3px #F8D4CF;
+    background: #DA726B;
+    box-shadow: 0 0 0 3px #F8D4CF;
 }
 
 .cbp_tmtimeline > li .cbp_tmicon.yellow {
-	background: #DAD464;
-	box-shadow: 0 0 0 3px #F8F7C7;
+    background: #DAD464;
+    box-shadow: 0 0 0 3px #F8F7C7;
 }
 
 
 /* Example Media Queries */
 @media screen and (max-width: 65.375em) {
 
-	.cbp_tmtimeline > li .cbp_tmtime span:last-child {
-		font-size: 1.5em;
-	}
+    .cbp_tmtimeline > li .cbp_tmtime span:last-child {
+        font-size: 1.5em;
+    }
 
-	.cbp_tmtimeline:before {
-		left: 19%
-	}
+    .cbp_tmtimeline:before {
+        left: 19%
+    }
 
 }
 
 /*@media screen and (max-width: 47.2em) {*/
 @media screen and (max-width: 500px) {
-	.cbp_tmtimeline:before {
-		/*display: none;*/
-	}
+    .cbp_tmtimeline:before {
+        /*display: none;*/
+    }
 
-	.cbp_tmtimeline > li .cbp_tmtime {
-		display: none;
-	}
+    .cbp_tmtimeline > li .cbp_tmtime {
+        display: none;
+    }
 
-	.cbp_tmtimeline:before {
-		left: 8%;
-	}
+    .cbp_tmtimeline:before {
+        left: 8%;
+    }
 
-	.cbp_tmtimeline > li .cbp_tmicon {
-		left: 10%;
-	}
-	
+    .cbp_tmtimeline > li .cbp_tmicon {
+        left: 10%;
+    }
+    
 }
 
