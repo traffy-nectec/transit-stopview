@@ -24,7 +24,7 @@ import NotFound from './components/NotFound'
 
 // const BUS_LOCATION_URL = '//cloud.traffy.in.th/apis/lib/apiScript/getBusLocation/getBusLocation.php?bus_line=73';
 const BUS_LOCATION_URL = '//localhost:8000/car/'
-const BUSSTOP_URL = '//localhost:8000/busstop/?limit=120&ordering=route_ref&route_id=136'
+const BUSSTOP_URL = '//localhost:8000/busstop/?limit=120&ordering=route_ref'
 
 /*
   App
@@ -41,6 +41,7 @@ var App = React.createClass({
       buses: [],
       busAtStop: {},
       incomingBus: {},
+      routeId: '135'
     }
   },
 
@@ -111,14 +112,13 @@ var App = React.createClass({
     })
   },
 
-  componentDidMount: function() {
-    /*this.setState({
-      busStops: require('./all-bus-stops')
-    })*/
+  updateBusStops: function(routeId) {
     let app = this;
+    console.log( ' route id : ' + routeId + " / " + app.state.routeId);
+    let rId = ( (routeId) ? routeId : app.state.routeId);
 
     when(request({
-      url: BUSSTOP_URL,
+      url: BUSSTOP_URL + '&route_id=' + rId,
       method: 'GET',
       headers: {
         // 'Authorization': 'Bearer ',
@@ -129,6 +129,22 @@ var App = React.createClass({
       })
 
     }))
+
+  },
+
+  changeRouteId: function(evt) {
+    this.setState({
+      routeId: this.refs.route_id.value,
+      buses: []
+    })
+    this.updateBusStops(this.refs.route_id.value);
+  },
+
+  componentDidMount: function() {
+    /*this.setState({
+      busStops: require('./all-bus-stops')
+    })*/
+    this.updateBusStops();
 
   },
   
@@ -143,6 +159,11 @@ var App = React.createClass({
             <li><label><input type="checkbox" ref="enableUpdate" checked={this.state.enabled}
           onChange={this.toggleEnableUpdate.bind(null, this)} /> update?</label></li>
             <li>Bus Total: {this.state.buses.length}</li>
+            <li><label>Route ID: </label>
+              <select ref="route_id" onChange={this.changeRouteId.bind(null, this)}>
+              <option value="135">Outbound</option>
+              <option value="136">Inbound</option>
+              </select></li>
           </ul>
         </div>
         <BusStopList busStops={this.state.busStops}
@@ -195,7 +216,7 @@ var BusItemList = React.createClass({
     } else {
       return (
         <li><b>{this.props.title}</b>:
-          {items.map( (i) => i.id + " (" + i['ref_btw_stops'] + ") " )}
+          {items.map( (i) => i.id + " (" + (100-i['ref_btw_stops']) + ") " )}
         </li>
       )
     }
@@ -246,7 +267,7 @@ var BusStop = React.createClass({
             <h4>{detail.name} <small>#{detail.stop_id}</small></h4>
             <ul>
               <BusItemList title="At stop" items={atStop} />
-              <BusItemList title="Incoming" items={incoming} />
+              <BusItemList title="Leaving" items={incoming} />
             </ul>
           </div>
         </div>
