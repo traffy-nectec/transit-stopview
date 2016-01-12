@@ -135,7 +135,9 @@ var App = React.createClass({
   changeRouteId: function(evt) {
     this.setState({
       routeId: this.refs.route_id.value,
-      buses: []
+      buses: [],
+      busAtStop: {},
+      incomingBus: {},
     })
     this.updateBusStops(this.refs.route_id.value);
   },
@@ -156,13 +158,13 @@ var App = React.createClass({
         <Header/>
         <div className="content">
           <ul className="inline-list">
-            <li><label><input type="checkbox" ref="enableUpdate" checked={this.state.enabled}
-          onChange={this.toggleEnableUpdate.bind(null, this)} /> update?</label></li>
-            <li>Bus Total: {this.state.buses.length}</li>
-            <li><label>Route ID: </label>
+            {/*<li><label><input type="checkbox" ref="enableUpdate" checked={this.state.enabled}
+          onChange={this.toggleEnableUpdate.bind(null, this)} /> update?</label></li>*/}
+            <li>จำนวนรถ: {this.state.buses.length} คัน</li>
+            <li>
               <select ref="route_id" onChange={this.changeRouteId.bind(null, this)}>
-              <option value="135">Outbound</option>
-              <option value="136">Inbound</option>
+              <option value="135">ขาออก</option>
+              <option value="136">ขาเข้า</option>
               </select></li>
           </ul>
         </div>
@@ -255,24 +257,34 @@ var BusStop = React.createClass({
     // console.log(atStop);
     // check if there is a bus at stop
     return (
-      <li>
+      <li className="each_stop">
         <div className="block">
           <time className="cbp_tmtime">
-            <span>{ atStop.length ? atStop.length : '' }</span>
+            <span>{/*{ atStop.length ? atStop.length : '' }*/}</span>
             <span></span></time>
           <div className="cbp_tmicon">
             { atStop.length ? this.renderBusIcon() : null }
           </div>
+          {incoming.map( (ele, i) => {
+            let xClsDict = [ele.ref_classname, 'cbp_tmicon', 'ontheway'];
+            let xClsName = cx(xClsDict);
+            let key = "car-icon-" + i;
+            return (
+              <div className={xClsName} key={key}>
+                { incoming.length ? this.renderBigBusIcon() : null }
+              </div>
+            )
+          })}
           <div className="cbp_tmlabel">
-            <h4>{detail.name} <small>#{detail.stop_id}</small></h4>
-            <ul>
+            <h4>{detail.name} {/*<small>#{detail.stop_id}</small>*/}</h4>
+            {/*<ul>
               <BusItemList title="At stop" items={atStop} />
               <BusItemList title="Leaving" items={incoming} />
-            </ul>
+            </ul>*/}
           </div>
         </div>
 
-        <div className="block">
+        {/*<div className="block">
           <time className="cbp_tmtime">
             <span>{ incoming.length ? incoming.length : '' }</span>
             <span></span></time>
@@ -287,7 +299,7 @@ var BusStop = React.createClass({
             )
           })}
           <div className="cbp_tmblank"></div>
-        </div>
+        </div>*/}
       </li>
     )
   },
@@ -295,7 +307,7 @@ var BusStop = React.createClass({
     return <i className="fa fa-bus"></i>
   },
   renderBigBusIcon: function() {
-    return <i className="fa fa-bus fa-2x"></i>
+    return <i className="fa fa-bus"></i>
   },
   propTypes: {
     busAtStop: React.PropTypes.object.isRequired,
@@ -315,7 +327,7 @@ var Header = React.createClass({
     return (
       <header className="clearfix">
         <span>Traffy</span>
-        <h1>73a</h1>
+        <h1>73ก</h1>
       </header> 
     )
   },
