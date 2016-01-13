@@ -9,22 +9,19 @@ import cs from 'classnames'
 // var Navigation = ReactRouter.Navigation; // mixin
 // var History = ReactRouter.History;
 import createBrowserHistory from 'history/lib/createBrowserHistory'
-import h from './helpers'
+// import h from './helpers'
 import request from 'reqwest'
 import when from 'when'
 // Firebase
-import Rebase from 're-base'
-var base = Rebase.createClass('https://shining-heat-3666.firebaseio.com/');
+// import Rebase from 're-base'
+// var base = Rebase.createClass('https://shining-heat-3666.firebaseio.com/');
 import cx from 'classnames';
 
 /*
   components
  */
 import NotFound from './components/NotFound'
-
-// const BUS_LOCATION_URL = '//cloud.traffy.in.th/apis/lib/apiScript/getBusLocation/getBusLocation.php?bus_line=73';
-const BUS_LOCATION_URL = '//localhost:8000/car/'
-const BUSSTOP_URL = '//localhost:8000/busstop/?limit=120&ordering=route_ref'
+import {BUS_LOCATION_URL, BUSSTOP_URL} from './constant'
 
 /*
   App
@@ -52,6 +49,7 @@ var App = React.createClass({
     when(request({
       url: BUS_LOCATION_URL,
       method: 'GET',
+      type: 'json',
       headers: {
         // 'Authorization': 'Bearer ',
       }
@@ -120,6 +118,7 @@ var App = React.createClass({
     when(request({
       url: BUSSTOP_URL + '&route_id=' + rId,
       method: 'GET',
+      type: 'json',
       headers: {
         // 'Authorization': 'Bearer ',
       }
