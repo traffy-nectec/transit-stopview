@@ -44,6 +44,9 @@ var App = React.createClass({
 
   fetchCurrentBusLocation: function() {
     let app = this;
+    let routeConv = {}
+    routeConv['135'] = 'outbound';
+    routeConv['136'] = 'inbound';
 
     // console.log('fetch fetchCurrentBusLocation');
     when(request({
@@ -55,13 +58,14 @@ var App = React.createClass({
       }
     }).then(function(response) {
       let currentBusAtStop = {};
-      let currentIncomingBus = {};
+      let currentLeavingBus = {};
 
-      response.map( (obj) => {
+      response.filter(item => item.direct == routeConv[app.state.routeId])
+          .map( (obj) => {
         // let station = obj.near_station;
         let next_station = obj.next_station;
         let prev_station = obj.previous_station;
-        let stationId = String(next_station.id_stop);
+        let stationId = String(prev_station.id_stop);
 
         let bus = {
           // need to change into something better -- fetch from API for example
@@ -78,26 +82,35 @@ var App = React.createClass({
         let tenth = Math.floor(bus['ref_btw_stops']/10)
         bus['ref_classname'] = "d" + ( (tenth > 1 && tenth < 9) ? tenth : '' ) + "0";
 
-        if (bus.ref_btw_stops > 85) {
+        // console.log(bus);
+
+        if (bus.ref_btw_stops < 10) {
           if (stationId in currentBusAtStop) {
             currentBusAtStop[stationId].push(bus);
           } else {
             currentBusAtStop[stationId] = [ bus ];
           }
-        } else {
-          if (stationId in currentIncomingBus) {
-            currentIncomingBus[stationId].push(bus);
+        } else if (bus.ref_btw_stops > 90) {
+          let xStationId = String(next_station.id_stop);
+          if (xStationId in currentBusAtStop) {
+            currentBusAtStop[xStationId].push(bus);
           } else {
-            currentIncomingBus[stationId] = [ bus ];
+            currentBusAtStop[xStationId] = [ bus ];
+          }
+        } else {
+          if (stationId in currentLeavingBus) {
+            currentLeavingBus[stationId].push(bus);
+          } else {
+            currentLeavingBus[stationId] = [ bus ];
           }
         }
-        // console.log("at: #"+currentBusAtStop.length + " | in: #" + currentIncomingBus.length);
+        // console.log("at: #"+currentBusAtStop.length + " | in: #" + currentLeavingBus.length);
       } );
 
       app.setState({
-        buses: response,
+        buses: response.filter(item => item.direct == routeConv[app.state.routeId]),
         busAtStop: currentBusAtStop,
-        incomingBus: currentIncomingBus,
+        incomingBus: currentLeavingBus,
       });
 
       return true;
@@ -112,7 +125,7 @@ var App = React.createClass({
 
   updateBusStops: function(routeId) {
     let app = this;
-    console.log( ' route id : ' + routeId + " / " + app.state.routeId);
+    // console.log( ' route id : ' + routeId + " / " + app.state.routeId);
     let rId = ( (routeId) ? routeId : app.state.routeId);
 
     when(request({
@@ -217,7 +230,7 @@ var BusItemList = React.createClass({
     } else {
       return (
         <li><b>{this.props.title}</b>:
-          {items.map( (i) => i.id + " (" + (100-i['ref_btw_stops']) + ") " )}
+          {items.map( (i) => i.id + " (" + (i['ref_btw_stops']) + ") " )}
         </li>
       )
     }
