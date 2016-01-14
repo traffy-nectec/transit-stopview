@@ -80,7 +80,7 @@ var App = React.createClass({
         bus['ref_btw_stops'] = Math.floor(relative_ref_btw_stops);
 
         let tenth = Math.floor(bus['ref_btw_stops']/10)
-        bus['ref_classname'] = "d" + ( (tenth > 1 && tenth < 9) ? tenth : '' ) + "0";
+        bus['ref_classname'] = "d" + ( (tenth > 1 && tenth < 9) ? '8' : '' ) + "0";
 
         // console.log(bus);
 

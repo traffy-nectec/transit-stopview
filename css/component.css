@@ -170,17 +170,17 @@ ul.inline-list li {
 
 
 .cbp_tmtimeline > li .cbp_tmicon.ontheway.d80 {
-    top: 20%;
+    top: 80%;
     color: #07B460;
 }
 
 .cbp_tmtimeline > li .cbp_tmicon.ontheway.d70 {
-    top: 30%;
+    top: 70%;
     color: #00C687;
 }
 
 .cbp_tmtimeline > li .cbp_tmicon.ontheway.d60 {
-    top: 40%;
+    top: 60%;
     color: #74CC2C;
 }
 
@@ -190,27 +190,27 @@ ul.inline-list li {
 }
 
 .cbp_tmtimeline > li .cbp_tmicon.ontheway.d40 {
-    top: 60%;
+    top: 40%;
     color: #065674;
 }
 
 .cbp_tmtimeline > li .cbp_tmicon.ontheway.d30 {
-    top: 70%;
+    top: 30%;
     color: #065674;
 }
 
 .cbp_tmtimeline > li .cbp_tmicon.ontheway.d20 {
-    top: 80%;
+    top: 20%;
     color: #065674;
 }
 
 .cbp_tmtimeline > li .cbp_tmicon.ontheway.d10 {
-    top: 90%;
+    top: 10%;
     color: #065674;
 }
 
 .cbp_tmtimeline > li .cbp_tmicon.ontheway.d0 {
-    top: 95%;
+    top: 0;
     color: #065674;
 }
 
