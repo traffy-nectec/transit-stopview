@@ -74,8 +74,14 @@ var App = React.createClass({
           id: obj.bmta_id,
           linear_ref: obj.linearref
         }
-        let relative_ref_btw_stops = (+bus.linear_ref - +prev_station.linearref)*100 /
+
+        // if it's at the destination, we don't care
+        let relative_ref_btw_stops = 0;
+        // but when it's not at the destination, we have to calc relative_ref
+        if (next_station.id_stop != prev_station.id_stop) {
+          relative_ref_btw_stops = (+bus.linear_ref - +prev_station.linearref)*100 /
           (+next_station.linearref - +prev_station.linearref);
+        }
 
         bus['ref_btw_stops'] = Math.floor(relative_ref_btw_stops);
 
@@ -104,7 +110,7 @@ var App = React.createClass({
             currentLeavingBus[stationId] = [ bus ];
           }
         }
-        // console.log("at: #"+currentBusAtStop.length + " | in: #" + currentLeavingBus.length);
+
       } );
 
       app.setState({
