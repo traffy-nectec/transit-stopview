@@ -9,6 +9,14 @@
     font-style: normal;
 } */ /* Made with http://icomoon.io/ */
 
+h1 small {
+    font-size: 0.8rem;
+    color: #A5CCDA;
+}
+
+a.outside_link, a.outside_link:active, a.outside_link:visited {
+    color: #F0249A;
+}
 
 ul.inline-list {
     list-style-type: disc;

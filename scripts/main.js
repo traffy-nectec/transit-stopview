@@ -184,6 +184,8 @@ var App = React.createClass({
               <option value="135">ขาออก</option>
               <option value="136">ขาเข้า</option>
               </select></li>
+            <li><a href="http://goo.gl/forms/e7GYDPC0CK" target="_blank" className="outside_link">
+              [ เสนอแนะ/ติชม ]</a></li>
           </ul>
         </div>
         <BusStopList busStops={this.state.busStops}
@@ -344,9 +346,15 @@ var Header = React.createClass({
   render: function() {
     return (
       <header className="clearfix">
+        <ul className="pull-right inline-list">
+          <li><img src="build/css/images/nstda_logo.svg" width="150" height="60" /></li>
+          <li><img src="build/css/images/nectec_logo.png" width="150" height="60" /></li>
+          <li><img src="build/css/images/traffy_logo.png" width="150" height="60" /></li>
+          <li><img src="build/css/images/ais_logo.png" width="150" height="60" /></li>
+        </ul>
         <span>Traffy</span>
-        <h1>73ก</h1>
-      </header> 
+        <h1>73ก <small>ปรับปรุงทุก 5 วินาที</small> </h1>
+      </header>
     )
   },
   propTypes: {
