@@ -1,5 +1,5 @@
 
-const BASE_API_URL = 'http://tffy.overly.xyz/';
+const BASE_API_URL = 'http://api.traffy.xyz/';
 
 let constants = {
   BUS_LOCATION_URL : BASE_API_URL + 'car/',

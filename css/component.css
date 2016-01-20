@@ -9,6 +9,12 @@
     font-style: normal;
 } */ /* Made with http://icomoon.io/ */
 
+.gm-container {
+    min-width: 600px;
+    min-height: 600px;
+    background: #EACFF4;
+}
+
 h1 small {
     font-size: 0.8rem;
     color: #A5CCDA;

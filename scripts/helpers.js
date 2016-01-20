@@ -1,3 +1,6 @@
+import moment from 'moment'
+
+
 let helpers =  {
   formatPrice :  function(cents) {
     return '$' + ( (cents / 100).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",") );
@@ -19,6 +22,11 @@ let helpers =  {
     var nouns = ['women', 'men', 'children', 'teeth', 'feet', 'people', 'leaves', 'mice', 'geese', 'halves', 'knives', 'wives', 'lives', 'elves', 'loaves', 'potatoes', 'tomatoes', 'cacti', 'foci', 'fungi', 'nuclei', 'syllabuses', 'analyses', 'diagnoses', 'oases', 'theses', 'crises', 'phenomena', 'criteria', 'data'];
     
     return `${this.rando(adjectives)}-${this.rando(adjectives)}-${this.rando(nouns)}`;
+  },
+  humanizeTime: function(day) {
+    if (day == undefined)
+      return '-';
+    return moment(day).locale("th").format();
   }
 }
 

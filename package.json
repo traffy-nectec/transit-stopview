@@ -40,6 +40,9 @@
   "dependencies": {
     "classnames": "^2.2.3",
     "history": "^1.12.5",
+    "moment": "^2.11.1",
+    "raf": "^3.1.0",
+    "react-google-maps": "^4.7.2",
     "react-interval": "^1.2.1",
     "react-router": "^1.0.0",
     "reqwest": "^2.0.5",
