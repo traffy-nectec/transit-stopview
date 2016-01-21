@@ -15,7 +15,7 @@ const Header = React.createClass({
           <li><img src="build/css/images/ais_logo.png" width="150" height="60" /></li>
         </ul>
         <span>Traffy</span>
-        <h1>73ก <small>ปรับปรุงทุก 5 วินาที</small> </h1>
+        <h1>73ก <small>ปรับปรุงทุก 10 วินาที</small> </h1>
       </header>
     )
   },

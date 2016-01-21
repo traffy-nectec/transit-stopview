@@ -25,7 +25,7 @@ const App = React.createClass({
     return {
       busStops: [],
       enabled: true,
-      timeout: 5000,
+      timeout: 10000,
       buses: [],
       busAtStop: {},
       incomingBus: {},

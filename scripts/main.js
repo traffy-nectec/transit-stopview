@@ -25,7 +25,7 @@ import Geolocation from './components/geoloc'
 
 var routes = (
   <Router history={createBrowserHistory()}>
-    <Route path="/transit" component={App}/>
+    <Route path="/transit/" component={App}/>
     <Route path="/" component={App}/>
     <Route path="*" component={NotFound}/>
   </Router>
