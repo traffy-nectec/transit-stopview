@@ -141,7 +141,9 @@ const App = React.createClass({
     }).then(function(response) {
       app.setState({
         busStops: response.results
-      })
+      });
+
+      app.fetchCurrentBusLocation();
 
     }))
 
