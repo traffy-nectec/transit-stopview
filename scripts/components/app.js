@@ -5,6 +5,7 @@ import ReactInterval from 'react-interval'
 import request from 'reqwest'
 import when from 'when'
 import moment from 'moment'
+import ga from 'react-ga'
 /*
   components
  */
@@ -156,6 +157,8 @@ const App = React.createClass({
       busAtStop: {},
       incomingBus: {},
     })
+    ga.event( { category: 'Change Route',
+                action: this.refs.route_id.value } );
     this.updateBusStops(this.refs.route_id.value);
   },
 

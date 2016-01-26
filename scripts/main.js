@@ -10,7 +10,8 @@ import createBrowserHistory from 'history/lib/createBrowserHistory'
 // Firebase
 // import Rebase from 're-base'
 // var base = Rebase.createClass('https://shining-heat-3666.firebaseio.com/');
-
+import ga from 'react-ga'
+import {GA_TRACKING_ID} from './constant'
 /*
   components
  */
@@ -24,11 +25,16 @@ import Geolocation from './components/geoloc'
  */
 
 var routes = (
-  <Router history={createBrowserHistory()}>
+  <Router history={createBrowserHistory()} onUpdate={logPageView}>
     <Route path="/transit/" component={App}/>
     <Route path="/" component={App}/>
     <Route path="*" component={NotFound}/>
   </Router>
 )
 
-ReactDOM.render(routes, document.querySelector("#main"));
+ga.initialize(GA_TRACKING_ID);
+ReactDOM.render(routes, document.querySelector('#main'));
+
+function logPageView() {
+    ga.pageview(this.state.location.pathname);
+}
