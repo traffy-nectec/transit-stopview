@@ -9,13 +9,14 @@ const Header = React.createClass({
     return (
       <header className="clearfix">
         <ul className="pull-right inline-list">
-          <li><img src="build/css/images/nstda_logo.svg" width="150" height="60" /></li>
-          <li><img src="build/css/images/nectec_logo.png" width="150" height="60" /></li>
-          <li><img src="build/css/images/traffy_logo.png" width="150" height="60" /></li>
-          <li><img src="build/css/images/ais_logo.png" width="150" height="60" /></li>
+          <li className="width-20"><img className="thumbnail" alt="BMTA" src="build/css/images/bmta_logo.png" /></li>
+          <li className="width-20"><img className="thumbnail" alt="NSTDA" src="build/css/images/nstda_logo.png" /></li>
+          <li className="width-20"><img className="thumbnail" alt="NECTEC" src="build/css/images/nectec_logo.png" /></li>
+          <li className="width-20"><img className="thumbnail" alt="Traffy" src="build/css/images/traffy_logo.png" /></li>
+          <li className="width-20"><img className="thumbnail" alt="AIS" src="build/css/images/ais_logo.png" /></li>
         </ul>
-        <span>Traffy</span>
-        <h1>73ก <small>ปรับปรุงทุก 10 วินาที</small> </h1>
+        <span>สาย</span>
+        <h1>73ก <small>BETA</small> </h1>
       </header>
     )
   },

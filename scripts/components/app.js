@@ -43,6 +43,7 @@ const App = React.createClass({
 
     // console.log('fetch fetchCurrentBusLocation');
     when(request({
+      // url: BUS_LOCATION_URL + '?t=' + Date.now(),
       url: BUS_LOCATION_URL,
       method: 'GET',
       type: 'json',

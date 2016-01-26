@@ -26,7 +26,24 @@ let helpers =  {
   humanizeTime: function(day) {
     if (day == undefined)
       return '-';
-    return moment(day).locale("th").format();
+    moment.locale('th', {
+      relativeTime : {
+        future : 'อีก %s',
+        past : '%sที่แล้ว',
+        s : 'ไม่กี่วินาที',
+        m : '1 นาที',
+        mm : '%d นาที',
+        h : '1 ชั่วโมง',
+        hh : '%d ชั่วโมง',
+        d : '1 วัน',
+        dd : '%d วัน',
+        M : '1 เดือน',
+        MM : '%d เดือน',
+        y : '1 ปี',
+        yy : '%d ปี'
+      }
+    });
+    return moment(day).locale('th').fromNow();
   }
 }
 
