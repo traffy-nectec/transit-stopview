@@ -55,12 +55,12 @@ const App = React.createClass({
       let currentLeavingBus = {};
       let newestTimestamp = new Date('1970-01-01');
 
-      response.filter(item => item.direct == routeConv[app.state.routeId])
+      response.filter(item => item.status == routeConv[app.state.routeId])
           .map( (obj) => {
         // let station = obj.near_station;
-        let next_station = obj.next_station;
-        let prev_station = obj.previous_station;
-        let stationId = String(prev_station.id_stop);
+        let next_station = obj.next_stop;
+        let prev_station = obj.prev_stop;
+        let stationId = String(prev_station.stop_id);
 
         if ( newestTimestamp < moment(obj.time_stamp) )
           newestTimestamp = moment(obj.time_stamp);
@@ -76,7 +76,7 @@ const App = React.createClass({
         // if it's at the destination, we don't care
         let relative_ref_btw_stops = 0;
         // but when it's not at the destination, we have to calc relative_ref
-        if (next_station.id_stop != prev_station.id_stop) {
+        if (next_station.stop_id != prev_station.stop_id) {
           relative_ref_btw_stops = (+bus.linear_ref - +prev_station.linearref)*100 /
           (+next_station.linearref - +prev_station.linearref);
         }
@@ -95,7 +95,7 @@ const App = React.createClass({
             currentBusAtStop[stationId] = [ bus ];
           }
         } else if (bus.ref_btw_stops > 90) {
-          let xStationId = String(next_station.id_stop);
+          let xStationId = String(next_station.stop_id);
           if (xStationId in currentBusAtStop) {
             currentBusAtStop[xStationId].push(bus);
           } else {
@@ -112,7 +112,7 @@ const App = React.createClass({
       } );
 
       app.setState({
-        buses: response.filter(item => item.direct == routeConv[app.state.routeId]),
+        buses: response.filter(item => item.status == routeConv[app.state.routeId]),
         busAtStop: currentBusAtStop,
         incomingBus: currentLeavingBus,
         lastUpdated: newestTimestamp,

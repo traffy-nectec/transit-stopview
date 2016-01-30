@@ -15,7 +15,7 @@ import {GA_TRACKING_ID} from './constant'
 /*
   components
  */
-import NotFound from './components/notfound'
+import NotFound from './components/NotFound'
 import App from './components/app'
 import Geolocation from './components/geoloc'
 
