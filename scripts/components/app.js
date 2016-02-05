@@ -188,6 +188,8 @@ const App = React.createClass({
               </select></li>
             <li><a href="http://goo.gl/forms/e7GYDPC0CK" target="_blank" className="outside_link">
               [ เสนอแนะ/ติชม ]</a></li>
+            <li><a href="http://kumo.traffy.in.th/busmap/" target="_blank" className="outside_link">
+              [ ดูเป็นแผนที่ ]</a></li>
             <li>ปรับปรุงเมื่อ: {humanizeTime(this.state.lastUpdated)}</li>
           </ul>
         </div>
