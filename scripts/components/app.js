@@ -192,6 +192,8 @@ const App = React.createClass({
               [ เสนอแนะ/ติชม ]</a></li>
             <li><a href="http://kumo.traffy.in.th/busmap/" target="_blank" className="outside_link">
               [ ดูเป็นแผนที่ ]</a></li>
+            <li><a href="http://nstda.traffy.xyz/" className="outside_link">
+              &lt;&lt; ดูข้อมูลรถ สวทช. &gt;&gt;</a></li>
             <li>ปรับปรุงเมื่อ: {humanizeTime(this.state.lastUpdated)}</li>
           </ul>
         </div>
