@@ -70,15 +70,15 @@ const App = React.createClass({
           bus_line: obj.bus_line,
           loc: [ obj.latitude, obj.longitude ],
           id: obj.bmta_id,
-          linear_ref: obj.linearref
+          linear_ref: obj.linear_ref
         }
 
         // if it's at the destination, we don't care
         let relative_ref_btw_stops = 0;
         // but when it's not at the destination, we have to calc relative_ref
         if (next_station.stop_id != prev_station.stop_id) {
-          relative_ref_btw_stops = (+bus.linear_ref - +prev_station.linearref)*100 /
-          (+next_station.linearref - +prev_station.linearref);
+          relative_ref_btw_stops = (+bus.linear_ref - +prev_station.linear_ref)*100 /
+          (+next_station.linear_ref - +prev_station.linear_ref);
         }
 
         bus['ref_btw_stops'] = Math.floor(relative_ref_btw_stops);
@@ -186,6 +186,8 @@ const App = React.createClass({
               <option value="135">ขาออก</option>
               <option value="136">ขาเข้า</option>
               </select></li>
+            <li><a href="http://goo.gl/forms/99FEHosxQl" target="_blank" className="outside_link">
+              [ แจ้งเหตุ/ของหายในรถเมล์ ]</a></li>
             <li><a href="http://goo.gl/forms/e7GYDPC0CK" target="_blank" className="outside_link">
               [ เสนอแนะ/ติชม ]</a></li>
             <li><a href="http://kumo.traffy.in.th/busmap/" target="_blank" className="outside_link">
