@@ -62,8 +62,8 @@ const App = React.createClass({
         let prev_station = obj.prev_stop;
         let stationId = String(prev_station.stop_id);
 
-        if ( newestTimestamp < moment(obj.time_stamp) )
-          newestTimestamp = moment(obj.time_stamp);
+        if ( newestTimestamp < moment(obj.gps_timestamp) )
+          newestTimestamp = moment(obj.gps_timestamp);
 
         let bus = {
           // need to change into something better -- fetch from API for example
