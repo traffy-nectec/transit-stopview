@@ -20,6 +20,15 @@ img {
     display: inline-block;
     vertical-align: middle;
 }
+
+span.arrival-time {
+    position: absolute;
+    left: -5rem;
+    color: #909090;
+    font-size: 0.9rem;
+    line-height: 0.95rem;
+}
+
 .thumbnail:hover, .thumbnail:focus {
     /*box-shadow: 0 0 6px 1px rgba(33, 153, 232, 0.5);*/
 }
@@ -302,5 +311,8 @@ ul.inline-list li {
         width: 22%;
     }
 
+    span.arrival-time {
+        left: 2em;
+    }
 }
 

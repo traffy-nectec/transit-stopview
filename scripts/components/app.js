@@ -65,12 +65,15 @@ const App = React.createClass({
         if ( newestTimestamp < moment(obj.gps_timestamp) )
           newestTimestamp = moment(obj.gps_timestamp);
 
+        let arrival_time = moment(obj.predict_time);
+        arrival_time = ( (arrival_time.isValid()) ? arrival_time : null );
         let bus = {
           // need to change into something better -- fetch from API for example
           bus_line: obj.bus_line,
           loc: [ obj.latitude, obj.longitude ],
           id: obj.bmta_id,
-          linear_ref: obj.linear_ref
+          linear_ref: obj.linear_ref,
+          est_arrival_time: arrival_time
         }
 
         // if it's at the destination, we don't care

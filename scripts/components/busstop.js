@@ -1,5 +1,6 @@
 import React from 'react'
 import cx from 'classnames'
+import {humanizeTime} from '../helpers'
 
 /*
   BusStopList
@@ -74,9 +75,20 @@ var BusStop = React.createClass({
             let xClsDict = [ele.ref_classname, 'cbp_tmicon', 'ontheway'];
             let xClsName = cx(xClsDict);
             let key = "car-icon-" + i;
+            // console.log(ele.est_arrival_time);
+            let nextStopTime = '';
+            if (ele.est_arrival_time) {
+              nextStopTime = (
+                <span className="arrival-time">
+                  {humanizeTime(ele.est_arrival_time)}<br/>
+                  จะถึงป้ายหน้า
+                </span>
+              )
+            }
             return (
               <div className={xClsName} key={key}>
                 { incoming.length ? this.renderBigBusIcon() : null }
+                {nextStopTime}
               </div>
             )
           })}
@@ -88,7 +100,6 @@ var BusStop = React.createClass({
             </ul>*/}
           </div>
         </div>
-
         {/*<div className="block">
           <time className="cbp_tmtime">
             <span>{ incoming.length ? incoming.length : '' }</span>
