@@ -44,6 +44,35 @@ let helpers =  {
       }
     });
     return moment(day).locale('th').fromNow();
+  },
+  humanizeArrivalTime: function(day) {
+    // console.log(day.format() + " --- " + (day - moment()) );
+    if (day == undefined || day - moment() < 0) {
+      // console.log('nah future or undefined');
+      return '';
+    }
+    if (day - moment() < 60000) {
+      // console.log('here');
+      return 'กำลังจะเข้าป้าย';
+    }
+    moment.locale('th', {
+      relativeTime : {
+        future : 'อีก %s',
+        past : '%sที่แล้ว',
+        s : 'ไม่กี่วินาที',
+        m : '1 นาที',
+        mm : '%d นาที',
+        h : '1 ชั่วโมง',
+        hh : '%d ชั่วโมง',
+        d : '1 วัน',
+        dd : '%d วัน',
+        M : '1 เดือน',
+        MM : '%d เดือน',
+        y : '1 ปี',
+        yy : '%d ปี'
+      }
+    });
+    return moment(day).locale('th').fromNow();
   }
 }
 

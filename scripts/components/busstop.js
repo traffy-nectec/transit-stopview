@@ -1,6 +1,7 @@
 import React from 'react'
 import cx from 'classnames'
-import {humanizeTime} from '../helpers'
+import {humanizeArrivalTime} from '../helpers'
+import moment from 'moment'
 
 /*
   BusStopList
@@ -71,17 +72,21 @@ var BusStop = React.createClass({
           <div className="cbp_tmicon">
             { atStop.length ? this.renderBusIcon() : null }
           </div>
+
           {incoming.map( (ele, i) => {
+            // TODO: bugfix -- multiple car on the same stop causing
+            //       text on top of each other
             let xClsDict = [ele.ref_classname, 'cbp_tmicon', 'ontheway'];
             let xClsName = cx(xClsDict);
             let key = "car-icon-" + i;
             // console.log(ele.est_arrival_time);
             let nextStopTime = '';
-            if (ele.est_arrival_time) {
+            if (ele.est_arrival_time - moment() > 0) {
+              let extraText = (ele.est_arrival_time - moment() > 60000 ? 'จะถึงป้ายหน้า' : '');
               nextStopTime = (
                 <span className="arrival-time">
-                  {humanizeTime(ele.est_arrival_time)}<br/>
-                  จะถึงป้ายหน้า
+                  {humanizeArrivalTime(ele.est_arrival_time)}<br/>
+                  {extraText}
                 </span>
               )
             }
