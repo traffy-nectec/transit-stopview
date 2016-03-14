@@ -24,8 +24,14 @@ let helpers =  {
     return `${this.rando(adjectives)}-${this.rando(adjectives)}-${this.rando(nouns)}`;
   },
   humanizeTime: function(day) {
+    // day is a moment object
     if (day == undefined)
       return '-';
+
+    if ( moment(day).year() <= (moment().year() - 1) ) {
+      return 'GPS ขัดข้อง';
+    }
+
     moment.locale('th', {
       relativeTime : {
         future : 'อีก %s',

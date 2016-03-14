@@ -191,7 +191,7 @@ const App = React.createClass({
               </select></li>
             <li><a href="http://goo.gl/forms/99FEHosxQl" target="_blank" className="outside_link">
               [ แจ้งเหตุ/ของหายในรถเมล์ ]</a></li>
-            <li><a href="https://www.facebook.com/traffy.in.th/posts/10154042812317033" target="_blank" className="outside_link">
+            <li><a href="http://goo.gl/forms/e7GYDPC0CK" target="_blank" className="outside_link">
               [ เสนอแนะ/ติชม ]</a></li>
             <li><a href="http://kumo.traffy.in.th/busmap/" target="_blank" className="outside_link">
               [ ดูเป็นแผนที่ ]</a></li>
